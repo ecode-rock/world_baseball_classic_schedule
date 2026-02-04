@@ -323,28 +323,103 @@
             body {
                 background: white;
                 color: black;
+                font-size: 10pt;
             }
             
             .controls {
                 display: none;
             }
             
+            /* Compact header for first page */
+            .header {
+                padding: 15px 10px;
+                margin-bottom: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem !important;
+                margin-bottom: 5px;
+            }
+            
+            .subtitle {
+                font-size: 1rem !important;
+            }
+            
+            /* Pool headers */
             .pool-header, .compact-header {
                 background: #f3f4f6 !important;
                 color: black !important;
+                padding: 12px 15px !important;
             }
             
+            .pool-header h2 {
+                font-size: 1.5rem !important;
+                margin-bottom: 4px;
+            }
+            
+            .pool-header p {
+                font-size: 0.85rem !important;
+            }
+            
+            /* Table spacing */
             table {
                 background: white;
+                font-size: 9pt;
             }
             
-            th, td {
+            th {
+                padding: 8px 10px !important;
+                font-size: 9pt;
+            }
+            
+            td {
+                padding: 8px 10px !important;
                 color: black;
                 border: 1px solid #ccc;
+                font-size: 9pt;
+            }
+            
+            /* Reduce spacing in team displays */
+            .team-display {
+                gap: 6px !important;
+            }
+            
+            .flag-icon {
+                font-size: 1.5em !important;
+                margin-right: 6px !important;
+            }
+            
+            .team-code {
+                font-size: 0.8rem !important;
+            }
+            
+            .team-name {
+                font-size: 0.65rem !important;
+            }
+            
+            .matchup {
+                gap: 10px !important;
+            }
+            
+            .vs {
+                font-size: 0.7rem !important;
+                padding: 2px 6px !important;
             }
             
             .phase-badge {
                 border: 1px solid #000;
+                padding: 4px 8px !important;
+                font-size: 0.65rem !important;
+            }
+            
+            .time {
+                font-size: 0.85rem !important;
+            }
+            
+            /* Reduce margins between sections */
+            .pool-section {
+                margin-bottom: 15px !important;
+                page-break-inside: avoid;
             }
         }
     </style>
