@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Baseball Classic 2026 - Schedule</title>
+    
+    <!-- Flag Icons Library -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Oswald', sans-serif;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #1e293b 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(to bottom, rgba(127, 29, 29, 0.3), transparent);
+            border-bottom: 4px solid #dc2626;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 4rem;
+            background: linear-gradient(to right, #fbbf24, white, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: #fbbf24;
+            text-align: center;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+        
+        .controls {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .view-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            border-radius: 8px;
+            border: 2px solid #dc2626;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.95rem;
+        }
+        
+        .btn:hover {
+            background: rgba(220, 38, 38, 0.2);
+        }
+        
+        .btn.active {
+            background: #dc2626;
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .btn-print {
+            margin-left: auto;
+            border-color: #fbbf24;
+            background: rgba(251, 191, 36, 0.2);
+        }
+        
+        .btn-print:hover {
+            background: rgba(251, 191, 36, 0.3);
+        }
+        
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        select, input {
+            padding: 10px 15px;
+            background: #1e293b;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            font-family: 'Oswald', sans-serif;
+            cursor: pointer;
+        }
+        
+        select:focus, input:focus {
+            outline: none;
+            border-color: #fbbf24;
+        }
+        
+        input {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .pool-section {
+            margin-bottom: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .pool-header {
+            padding: 25px;
+            font-family: 'Bebas Neue', cursive;
+        }
+        
+        .pool-a { background: linear-gradient(to right, #dc2626, #991b1b); }
+        .pool-b { background: linear-gradient(to right, #2563eb, #1e40af); }
+        .pool-c { background: linear-gradient(to right, #ea580c, #c2410c); }
+        .pool-d { background: linear-gradient(to right, #16a34a, #15803d); }
+        .knockout { background: linear-gradient(to right, #9333ea, #7e22ce); }
+        
+        .pool-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+            letter-spacing: 3px;
+        }
+        
+        .pool-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-family: 'Oswald', sans-serif;
+        }
+        
+        table {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        thead {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        th:hover {
+            background: rgba(220, 38, 38, 0.2);
+        }
+        
+        td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        tr:hover {
+            background: rgba(251, 191, 36, 0.05);
+            transform: translateX(5px);
+            transition: all 0.3s;
+        }
+        
+        .flag-icon {
+            font-size: 2em;
+            margin-right: 10px;
+            border-radius: 4px;
+        }
+        
+        .team-display {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .team-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .team-code {
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .team-name {
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
+        
+        .matchup {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .vs {
+            color: #fbbf24;
+            font-weight: 900;
+            font-size: 1.2rem;
+        }
+        
+        .time {
+            color: #fbbf24;
+            font-weight: bold;
+        }
+        
+        .phase-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border: 1px solid;
+        }
+        
+        .phase-pool { background: rgba(59, 130, 246, 0.3); border-color: #3b82f6; }
+        .phase-quarter { background: rgba(251, 191, 36, 0.3); border-color: #fbbf24; }
+        .phase-semi { background: rgba(249, 115, 22, 0.3); border-color: #f97316; }
+        .phase-final { background: rgba(239, 68, 68, 0.3); border-color: #ef4444; }
+        
+        .compact-calendar {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .compact-header {
+            background: linear-gradient(to right, #4f46e5, #7c3aed);
+            padding: 25px;
+        }
+        
+        .compact-header h2 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2.5rem;
+            letter-spacing: 3px;
+        }
+        
+        .date-group {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .date-header {
+            background: linear-gradient(to right, rgba(251, 191, 36, 0.2), transparent);
+            border-left: 4px solid #fbbf24;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+        }
+        
+        .date-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.8rem;
+        }
+        
+        .date-day {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        .game-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .game-row:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .game-time {
+            width: 80px;
+            flex-shrink: 0;
+        }
+        
+        .game-teams {
+            flex: 1;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .controls {
+                display: none;
+            }
+            
+            .pool-header, .compact-header {
+                background: #f3f4f6 !important;
+                color: black !important;
+            }
+            
+            table {
+                background: white;
+            }
+            
+            th, td {
+                color: black;
+                border: 1px solid #ccc;
+            }
+            
+            .phase-badge {
+                border: 1px solid #000;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>WORLD BASEBALL CLASSIC 2026</h1>
+            <p class="subtitle">OFFICIAL TOURNAMENT SCHEDULE</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="controls">
+            <div class="view-buttons">
+                <button class="btn active" onclick="setView('by-pool')">BY POOL</button>
+                <button class="btn" onclick="setView('by-team')">BY TEAM</button>
+                <button class="btn" onclick="setView('compact')">COMPACT</button>
+                <button class="btn" onclick="setView('calendar')">CALENDAR</button>
+                <button class="btn" onclick="setView('master')">ALL GAMES</button>
+                <button class="btn btn-print" onclick="window.print()">📄 PRINT PDF</button>
+            </div>
+            
+            <div class="filters">
+                <select id="filterPool" onchange="applyFilters()">
+                    <option value="all">All Pools</option>
+                    <option value="A">Pool A</option>
+                    <option value="B">Pool B</option>
+                    <option value="C">Pool C</option>
+                    <option value="D">Pool D</option>
+                </select>
+                
+                <select id="filterTeam" onchange="applyFilters()">
+                    <option value="all">All Teams</option>
+                </select>
+                
+                <select id="filterPhase" onchange="applyFilters()">
+                    <option value="all">All Phases</option>
+                    <option value="Pool Play">Pool Play</option>
+                    <option value="Quarterfinals">Quarterfinals</option>
+                    <option value="Semifinals">Semifinals</option>
+                    <option value="Final">Final</option>
+                </select>
+                
+                <input type="text" id="search" placeholder="Search teams or venues..." oninput="applyFilters()">
+            </div>
+        </div>
+        
+        <div id="content"></div>
+    </div>
+    
+    <script>
+        const scheduleData = {
+            pools: {
+                A: {
+                    name: "Pool A",
+                    venue: "Hiram Bithorn Stadium",
+                    location: "San Juan, Puerto Rico",
+                    dates: "March 6-11, 2026",
+                    teams: ["PUR", "CUB", "CAN", "PAN", "COL"]
+                },
+                B: {
+                    name: "Pool B",
+                    venue: "Daikin Park",
+                    location: "Houston, Texas, USA",
+                    dates: "March 6-11, 2026",
+                    teams: ["USA", "MEX", "ITA", "GBR", "BRA"]
+                },
+                C: {
+                    name: "Pool C",
+                    venue: "Tokyo Dome",
+                    location: "Tokyo, Japan",
+                    dates: "March 5-10, 2026",
+                    teams: ["JPN", "AUS", "KOR", "CZE", "TPE"]
+                },
+                D: {
+                    name: "Pool D",
+                    venue: "loanDepot park",
+                    location: "Miami, Florida, USA",
+                    dates: "March 6-11, 2026",
+                    teams: ["VEN", "DOM", "NED", "ISR", "NCA"]
+                }
+            },
+            teams: {
+                PUR: { name: "Puerto Rico", flag: "pr" },
+                CUB: { name: "Cuba", flag: "cu" },
+                CAN: { name: "Canada", flag: "ca" },
+                PAN: { name: "Panama", flag: "pa" },
+                COL: { name: "Colombia", flag: "co" },
+                USA: { name: "United States", flag: "us" },
+                MEX: { name: "Mexico", flag: "mx" },
+                ITA: { name: "Italy", flag: "it" },
+                GBR: { name: "Great Britain", flag: "gb" },
+                BRA: { name: "Brazil", flag: "br" },
+                JPN: { name: "Japan", flag: "jp" },
+                AUS: { name: "Australia", flag: "au" },
+                KOR: { name: "Korea", flag: "kr" },
+                CZE: { name: "Czech Republic", flag: "cz" },
+                TPE: { name: "Chinese Taipei", flag: "tw" },
+                VEN: { name: "Venezuela", flag: "ve" },
+                DOM: { name: "Dominican Republic", flag: "do" },
+                NED: { name: "Netherlands", flag: "nl" },
+                ISR: { name: "Israel", flag: "il" },
+                NCA: { name: "Nicaragua", flag: "ni" }
+            },
+            games: [
+                {id: 1, date: "2026-03-04", dateDisplay: "Mar 4", day: "Wed", time: "10:00 PM", team1: "TPE", team2: "AUS", venue: "Tokyo Dome - Tokyo", pool: "C", phase: "Pool Play"},
+                {id: 2, date: "2026-03-05", dateDisplay: "Mar 5", day: "Thu", time: "5:00 AM", team1: "CZE", team2: "KOR", venue: "Tokyo Dome - Tokyo", pool: "C", phase: "Pool Play"},
+                {id: 3, date: "2026-03-05", dateDisplay: "Mar 5", day: "Thu", time: "10:00 PM", team1: "AUS", team2: "CZE", venue: "Tokyo Dome - Tokyo", pool: "C", phase: "Pool Play"},
+                {id: 4, date: "2026-03-06", dateDisplay: "Mar 6", day: "Fri", time: "5:00 AM", team1: "JPN", team2: "TPE", venue: "Tokyo Dome - Tokyo", pool: "C", phase: "Pool Play"},
+                {id: 5, date: "2026-03-06", dateDisplay: "Mar 6", day: "Fri", time: "10:00 PM", team1: "TPE", team2: "CZE", venue: "Tokyo Dome - Tokyo", pool: "C", phase: "Pool Play"},
+                {id: 6, date: "2026-03-07", dateDisplay: "Mar 7", day: "Sat", time: "5:00 AM", team1: "KOR", team2: "JPN", venue: "Tokyo Dome - Tokyo", pool: "C", phase: "Pool Play"},
+                {id: 7, date: "2026-03-07", dateDisplay: "Mar 7", day: "Sat", time: "10:00 PM", team1: "TPE", team2: "KOR", venue: "Tokyo Dome - Tokyo", pool: "C", phase: "Pool Play"},
+                {id: 8, date: "2026-03-08", dateDisplay: "Mar 8", day: "Sun", time: "6:00 AM", team1: "AUS", team2: "JPN", venue: "Tokyo Dome - Tokyo", pool: "C", phase: "Pool Play"},
+                {id: 9, date: "2026-03-09", dateDisplay: "Mar 9", day: "Mon", time: "6:00 AM", team1: "KOR", team2: "AUS", venue: "Tokyo Dome - Tokyo", pool: "C", phase: "Pool Play"},
+                {id: 10, date: "2026-03-10", dateDisplay: "Mar 10", day: "Tue", time: "6:00 AM", team1: "CZE", team2: "JPN", venue: "Tokyo Dome - Tokyo", pool: "C", phase: "Pool Play"},
+                {id: 11, date: "2026-03-06", dateDisplay: "Mar 6", day: "Fri", time: "11:00 AM", team1: "CUB", team2: "PAN", venue: "Hiram Bithorn Stadium - San Juan, PR", pool: "A", phase: "Pool Play"},
+                {id: 12, date: "2026-03-06", dateDisplay: "Mar 6", day: "Fri", time: "6:00 PM", team1: "PUR", team2: "COL", venue: "Hiram Bithorn Stadium - San Juan, PR", pool: "A", phase: "Pool Play"},
+                {id: 13, date: "2026-03-07", dateDisplay: "Mar 7", day: "Sat", time: "11:00 AM", team1: "COL", team2: "CAN", venue: "Hiram Bithorn Stadium - San Juan, PR", pool: "A", phase: "Pool Play"},
+                {id: 14, date: "2026-03-07", dateDisplay: "Mar 7", day: "Sat", time: "6:00 PM", team1: "PAN", team2: "PUR", venue: "Hiram Bithorn Stadium - San Juan, PR", pool: "A", phase: "Pool Play"},
+                {id: 15, date: "2026-03-08", dateDisplay: "Mar 8", day: "Sun", time: "12:00 PM", team1: "COL", team2: "CUB", venue: "Hiram Bithorn Stadium - San Juan, PR", pool: "A", phase: "Pool Play"},
+                {id: 16, date: "2026-03-08", dateDisplay: "Mar 8", day: "Sun", time: "7:00 PM", team1: "PAN", team2: "CAN", venue: "Hiram Bithorn Stadium - San Juan, PR", pool: "A", phase: "Pool Play"},
+                {id: 17, date: "2026-03-09", dateDisplay: "Mar 9", day: "Mon", time: "12:00 PM", team1: "COL", team2: "PAN", venue: "Hiram Bithorn Stadium - San Juan, PR", pool: "A", phase: "Pool Play"},
+                {id: 18, date: "2026-03-09", dateDisplay: "Mar 9", day: "Mon", time: "7:00 PM", team1: "CUB", team2: "PUR", venue: "Hiram Bithorn Stadium - San Juan, PR", pool: "A", phase: "Pool Play"},
+                {id: 19, date: "2026-03-10", dateDisplay: "Mar 10", day: "Tue", time: "7:00 PM", team1: "CAN", team2: "PUR", venue: "Hiram Bithorn Stadium - San Juan, PR", pool: "A", phase: "Pool Play"},
+                {id: 20, date: "2026-03-11", dateDisplay: "Mar 11", day: "Wed", time: "3:00 PM", team1: "CAN", team2: "CUB", venue: "Hiram Bithorn Stadium - San Juan, PR", pool: "A", phase: "Pool Play"},
+                {id: 21, date: "2026-03-06", dateDisplay: "Mar 6", day: "Fri", time: "1:00 PM", team1: "MEX", team2: "GBR", venue: "Daikin Park - Houston, TX", pool: "B", phase: "Pool Play"},
+                {id: 22, date: "2026-03-06", dateDisplay: "Mar 6", day: "Fri", time: "8:00 PM", team1: "USA", team2: "BRA", venue: "Daikin Park - Houston, TX", pool: "B", phase: "Pool Play"},
+                {id: 23, date: "2026-03-07", dateDisplay: "Mar 7", day: "Sat", time: "1:00 PM", team1: "BRA", team2: "ITA", venue: "Daikin Park - Houston, TX", pool: "B", phase: "Pool Play"},
+                {id: 24, date: "2026-03-07", dateDisplay: "Mar 7", day: "Sat", time: "8:00 PM", team1: "GBR", team2: "USA", venue: "Daikin Park - Houston, TX", pool: "B", phase: "Pool Play"},
+                {id: 25, date: "2026-03-08", dateDisplay: "Mar 8", day: "Sun", time: "1:00 PM", team1: "GBR", team2: "ITA", venue: "Daikin Park - Houston, TX", pool: "B", phase: "Pool Play"},
+                {id: 26, date: "2026-03-08", dateDisplay: "Mar 8", day: "Sun", time: "8:00 PM", team1: "BRA", team2: "MEX", venue: "Daikin Park - Houston, TX", pool: "B", phase: "Pool Play"},
+                {id: 27, date: "2026-03-09", dateDisplay: "Mar 9", day: "Mon", time: "1:00 PM", team1: "BRA", team2: "GBR", venue: "Daikin Park - Houston, TX", pool: "B", phase: "Pool Play"},
+                {id: 28, date: "2026-03-09", dateDisplay: "Mar 9", day: "Mon", time: "8:00 PM", team1: "MEX", team2: "USA", venue: "Daikin Park - Houston, TX", pool: "B", phase: "Pool Play"},
+                {id: 29, date: "2026-03-10", dateDisplay: "Mar 10", day: "Tue", time: "9:00 PM", team1: "ITA", team2: "USA", venue: "Daikin Park - Houston, TX", pool: "B", phase: "Pool Play"},
+                {id: 30, date: "2026-03-11", dateDisplay: "Mar 11", day: "Wed", time: "7:00 PM", team1: "ITA", team2: "MEX", venue: "Daikin Park - Houston, TX", pool: "B", phase: "Pool Play"},
+                {id: 31, date: "2026-03-06", dateDisplay: "Mar 6", day: "Fri", time: "12:00 PM", team1: "NED", team2: "VEN", venue: "loanDepot park - Miami, FL", pool: "D", phase: "Pool Play"},
+                {id: 32, date: "2026-03-06", dateDisplay: "Mar 6", day: "Fri", time: "7:00 PM", team1: "NCA", team2: "DOM", venue: "loanDepot park - Miami, FL", pool: "D", phase: "Pool Play"},
+                {id: 33, date: "2026-03-07", dateDisplay: "Mar 7", day: "Sat", time: "12:00 PM", team1: "NCA", team2: "NED", venue: "loanDepot park - Miami, FL", pool: "D", phase: "Pool Play"},
+                {id: 34, date: "2026-03-07", dateDisplay: "Mar 7", day: "Sat", time: "7:00 PM", team1: "ISR", team2: "VEN", venue: "loanDepot park - Miami, FL", pool: "D", phase: "Pool Play"},
+                {id: 35, date: "2026-03-08", dateDisplay: "Mar 8", day: "Sun", time: "12:00 PM", team1: "NED", team2: "DOM", venue: "loanDepot park - Miami, FL", pool: "D", phase: "Pool Play"},
+                {id: 36, date: "2026-03-08", dateDisplay: "Mar 8", day: "Sun", time: "7:00 PM", team1: "NCA", team2: "ISR", venue: "loanDepot park - Miami, FL", pool: "D", phase: "Pool Play"},
+                {id: 37, date: "2026-03-09", dateDisplay: "Mar 9", day: "Mon", time: "12:00 PM", team1: "DOM", team2: "ISR", venue: "loanDepot park - Miami, FL", pool: "D", phase: "Pool Play"},
+                {id: 38, date: "2026-03-09", dateDisplay: "Mar 9", day: "Mon", time: "7:00 PM", team1: "VEN", team2: "NCA", venue: "loanDepot park - Miami, FL", pool: "D", phase: "Pool Play"},
+                {id: 39, date: "2026-03-10", dateDisplay: "Mar 10", day: "Tue", time: "7:00 PM", team1: "ISR", team2: "NED", venue: "loanDepot park - Miami, FL", pool: "D", phase: "Pool Play"},
+                {id: 40, date: "2026-03-11", dateDisplay: "Mar 11", day: "Wed", time: "8:00 PM", team1: "DOM", team2: "VEN", venue: "loanDepot park - Miami, FL", pool: "D", phase: "Pool Play"},
+                {id: 41, date: "2026-03-13", dateDisplay: "Mar 13", day: "Fri", time: "6:30 PM", team1: "TBD", team2: "TBD", venue: "loanDepot park - Miami, FL", pool: null, phase: "Quarterfinals"},
+                {id: 42, date: "2026-03-13", dateDisplay: "Mar 13", day: "Fri", time: "8:00 PM", team1: "TBD", team2: "TBD", venue: "Daikin Park - Houston, TX", pool: null, phase: "Quarterfinals"},
+                {id: 43, date: "2026-03-14", dateDisplay: "Mar 14", day: "Sat", time: "3:00 PM", team1: "TBD", team2: "TBD", venue: "Daikin Park - Houston, TX", pool: null, phase: "Quarterfinals"},
+                {id: 44, date: "2026-03-14", dateDisplay: "Mar 14", day: "Sat", time: "9:00 PM", team1: "TBD", team2: "TBD", venue: "loanDepot park - Miami, FL", pool: null, phase: "Quarterfinals"},
+                {id: 45, date: "2026-03-15", dateDisplay: "Mar 15", day: "Sun", time: "8:00 PM", team1: "TBD", team2: "TBD", venue: "loanDepot park - Miami, FL", pool: null, phase: "Semifinals"},
+                {id: 46, date: "2026-03-16", dateDisplay: "Mar 16", day: "Mon", time: "8:00 PM", team1: "TBD", team2: "TBD", venue: "loanDepot park - Miami, FL", pool: null, phase: "Semifinals"},
+                {id: 47, date: "2026-03-17", dateDisplay: "Mar 17", day: "Tue", time: "8:00 PM", team1: "TBD", team2: "TBD", venue: "loanDepot park - Miami, FL", pool: null, phase: "Final"}
+            ]
+        };
+        
+        let currentView = 'by-pool';
+        let filteredGames = [...scheduleData.games];
+        
+        // Populate team filter
+        const teamFilter = document.getElementById('filterTeam');
+        Object.entries(scheduleData.teams).sort((a, b) => a[1].name.localeCompare(b[1].name)).forEach(([code, team]) => {
+            const option = document.createElement('option');
+            option.value = code;
+            option.textContent = team.name;
+            teamFilter.appendChild(option);
+        });
+        
+        function createTeamDisplay(teamCode, showName = true) {
+            if (teamCode === 'TBD') {
+                return `<div class="team-display">
+                    <div style="width: 50px; height: 38px; background: #4b5563; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+                        <span style="font-size: 0.75rem; font-weight: bold;">TBD</span>
+                    </div>
+                    <span style="font-weight: bold;">TBD</span>
+                </div>`;
+            }
+            
+            const team = scheduleData.teams[teamCode];
+            if (!team) return '';
+            
+            return `<div class="team-display">
+                <span class="fi fi-${team.flag} flag-icon"></span>
+                <div class="team-info">
+                    <span class="team-code">${teamCode}</span>
+                    ${showName ? `<span class="team-name">${team.name}</span>` : ''}
+                </div>
+            </div>`;
+        }
+        
+        function createPhaseBadge(phase) {
+            const phaseClasses = {
+                'Pool Play': 'phase-pool',
+                'Quarterfinals': 'phase-quarter',
+                'Semifinals': 'phase-semi',
+                'Final': 'phase-final'
+            };
+            return `<span class="phase-badge ${phaseClasses[phase] || ''}">${phase}</span>`;
+        }
+        
+        function createGameTable(games) {
+            if (games.length === 0) {
+                return '<p style="text-align: center; padding: 50px; opacity: 0.5; font-style: italic;">No games match the current filters</p>';
+            }
+            
+            return `<table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time (ET)</th>
+                        <th>Matchup</th>
+                        <th>Venue</th>
+                        <th>Phase</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${games.map(game => `
+                        <tr>
+                            <td>
+                                <div style="font-weight: bold;">${game.dateDisplay}</div>
+                                <div style="font-size: 0.75rem; opacity: 0.7;">${game.day}</div>
+                            </td>
+                            <td class="time">${game.time}</td>
+                            <td>
+                                <div class="matchup">
+                                    ${createTeamDisplay(game.team1)}
+                                    <span class="vs">VS</span>
+                                    ${createTeamDisplay(game.team2)}
+                                </div>
+                            </td>
+                            <td style="font-size: 0.9rem;">${game.venue}</td>
+                            <td>${createPhaseBadge(game.phase)}</td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>`;
+        }
+        
+        function renderByPool() {
+            const poolGames = {
+                A: filteredGames.filter(g => g.pool === 'A'),
+                B: filteredGames.filter(g => g.pool === 'B'),
+                C: filteredGames.filter(g => g.pool === 'C'),
+                D: filteredGames.filter(g => g.pool === 'D')
+            };
+            const knockoutGames = filteredGames.filter(g => !g.pool);
+            
+            let html = '';
+            
+            ['A', 'B', 'C', 'D'].forEach(poolKey => {
+                const pool = scheduleData.pools[poolKey];
+                const games = poolGames[poolKey];
+                if (games.length === 0) return;
+                
+                html += `<div class="pool-section">
+                    <div class="pool-header pool-${poolKey.toLowerCase()}">
+                        <h2>${pool.name}</h2>
+                        <p>${pool.venue} • ${pool.location} • ${pool.dates}</p>
+                    </div>
+                    ${createGameTable(games)}
+                </div>`;
+            });
+            
+            if (knockoutGames.length > 0) {
+                html += `<div class="pool-section">
+                    <div class="pool-header knockout">
+                        <h2>KNOCKOUT ROUNDS</h2>
+                        <p>Quarterfinals, Semifinals & Final</p>
+                    </div>
+                    ${createGameTable(knockoutGames)}
+                </div>`;
+            }
+            
+            return html;
+        }
+        
+        function renderByTeam() {
+            const teamCodes = Object.keys(scheduleData.teams).sort();
+            let html = '';
+            
+            teamCodes.forEach(teamCode => {
+                const teamGames = filteredGames.filter(g => g.team1 === teamCode || g.team2 === teamCode);
+                if (teamGames.length === 0) return;
+                
+                const team = scheduleData.teams[teamCode];
+                const pool = Object.entries(scheduleData.pools).find(([_, p]) => p.teams.includes(teamCode));
+                
+                html += `<div class="pool-section">
+                    <div class="pool-header" style="background: linear-gradient(to right, #dc2626, #2563eb); display: flex; align-items: center; gap: 20px;">
+                        <span class="fi fi-${team.flag}" style="font-size: 4rem; border-radius: 8px;"></span>
+                        <div>
+                            <h2>${team.name}</h2>
+                            <p>${pool ? `${pool[1].name} • ${pool[1].venue}` : ''}</p>
+                        </div>
+                    </div>
+                    ${createGameTable(teamGames)}
+                </div>`;
+            });
+            
+            return html;
+        }
+        
+        function renderCompact() {
+            const gamesByDate = {};
+            filteredGames.forEach(game => {
+                if (!gamesByDate[game.dateDisplay]) {
+                    gamesByDate[game.dateDisplay] = [];
+                }
+                gamesByDate[game.dateDisplay].push(game);
+            });
+            
+            const dates = Object.keys(gamesByDate).sort((a, b) => {
+                const aDate = filteredGames.find(g => g.dateDisplay === a).date;
+                const bDate = filteredGames.find(g => g.dateDisplay === b).date;
+                return new Date(aDate) - new Date(bDate);
+            });
+            
+            let html = '<div class="compact-calendar"><div class="compact-header"><h2>COMPACT CALENDAR</h2><p>Day-by-day schedule</p></div>';
+            
+            dates.forEach(date => {
+                const dayGames = gamesByDate[date];
+                const firstGame = dayGames[0];
+                
+                html += `<div class="date-group">
+                    <div class="date-header">
+                        <div class="date-title">${date}</div>
+                        <div class="date-day">${firstGame.day}</div>
+                    </div>`;
+                
+                dayGames.forEach(game => {
+                    html += `<div class="game-row">
+                        <div class="game-time time">${game.time}</div>
+                        <div class="game-teams">
+                            <div style="font-weight: bold;">
+                                <span>${game.team1}</span>
+                                <span class="vs">vs</span>
+                                <span>${game.team2}</span>
+                            </div>
+                            <div style="font-size: 0.75rem; opacity: 0.6; margin-top: 4px;">${game.venue}</div>
+                        </div>
+                        <div>${createPhaseBadge(game.phase)}</div>
+                    </div>`;
+                });
+                
+                html += '</div>';
+            });
+            
+            html += '</div>';
+            return html;
+        }
+        
+        function renderCalendarOrMaster() {
+            return `<div class="pool-section">
+                <div class="pool-header" style="background: linear-gradient(to right, #dc2626, #2563eb);">
+                    <h2>${currentView === 'calendar' ? 'ALL GAMES - CALENDAR VIEW' : 'MASTER SCHEDULE'}</h2>
+                    <p>${filteredGames.length} games</p>
+                </div>
+                ${createGameTable(filteredGames)}
+            </div>`;
+        }
+        
+        function render() {
+            const content = document.getElementById('content');
+            
+            switch(currentView) {
+                case 'by-pool':
+                    content.innerHTML = renderByPool();
+                    break;
+                case 'by-team':
+                    content.innerHTML = renderByTeam();
+                    break;
+                case 'compact':
+                    content.innerHTML = renderCompact();
+                    break;
+                case 'calendar':
+                case 'master':
+                    content.innerHTML = renderCalendarOrMaster();
+                    break;
+            }
+        }
+        
+        function setView(view) {
+            currentView = view;
+            
+            // Update button states
+            document.querySelectorAll('.view-buttons .btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            render();
+        }
+        
+        function applyFilters() {
+            const poolFilter = document.getElementById('filterPool').value;
+            const teamFilter = document.getElementById('filterTeam').value;
+            const phaseFilter = document.getElementById('filterPhase').value;
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            
+            filteredGames = scheduleData.games.filter(game => {
+                if (poolFilter !== 'all' && game.pool !== poolFilter) return false;
+                if (teamFilter !== 'all' && game.team1 !== teamFilter && game.team2 !== teamFilter) return false;
+                if (phaseFilter !== 'all' && game.phase !== phaseFilter) return false;
+                
+                if (searchTerm) {
+                    const team1 = scheduleData.teams[game.team1];
+                    const team2 = scheduleData.teams[game.team2];
+                    const searchableText = `${game.team1} ${game.team2} ${team1?.name} ${team2?.name} ${game.venue}`.toLowerCase();
+                    if (!searchableText.includes(searchTerm)) return false;
+                }
+                
+                return true;
+            });
+            
+            render();
+        }
+        
+        // Initial render
+        render();
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+Game ID,Date,Day of Week,Time (ET),Team 1 Code,Team 1 Name,Team 2 Code,Team 2 Name,Venue,Pool,Phase
+1,Mar 4,Wednesday,10:00 PM,TPE,Chinese Taipei,AUS,Australia,Tokyo Dome - Tokyo,C,Pool Play
+2,Mar 5,Thursday,5:00 AM,CZE,Czech Republic,KOR,Korea,Tokyo Dome - Tokyo,C,Pool Play
+3,Mar 5,Thursday,10:00 PM,AUS,Australia,CZE,Czech Republic,Tokyo Dome - Tokyo,C,Pool Play
+4,Mar 6,Friday,5:00 AM,JPN,Japan,TPE,Chinese Taipei,Tokyo Dome - Tokyo,C,Pool Play
+5,Mar 6,Friday,10:00 PM,TPE,Chinese Taipei,CZE,Czech Republic,Tokyo Dome - Tokyo,C,Pool Play
+6,Mar 7,Saturday,5:00 AM,KOR,Korea,JPN,Japan,Tokyo Dome - Tokyo,C,Pool Play
+7,Mar 7,Saturday,10:00 PM,TPE,Chinese Taipei,KOR,Korea,Tokyo Dome - Tokyo,C,Pool Play
+8,Mar 8,Sunday,6:00 AM,AUS,Australia,JPN,Japan,Tokyo Dome - Tokyo,C,Pool Play
+9,Mar 9,Monday,6:00 AM,KOR,Korea,AUS,Australia,Tokyo Dome - Tokyo,C,Pool Play
+10,Mar 10,Tuesday,6:00 AM,CZE,Czech Republic,JPN,Japan,Tokyo Dome - Tokyo,C,Pool Play
+11,Mar 6,Friday,11:00 AM,CUB,Cuba,PAN,Panama,"Hiram Bithorn Stadium - San Juan, PR",A,Pool Play
+12,Mar 6,Friday,6:00 PM,PUR,Puerto Rico,COL,Colombia,"Hiram Bithorn Stadium - San Juan, PR",A,Pool Play
+13,Mar 7,Saturday,11:00 AM,COL,Colombia,CAN,Canada,"Hiram Bithorn Stadium - San Juan, PR",A,Pool Play
+14,Mar 7,Saturday,6:00 PM,PAN,Panama,PUR,Puerto Rico,"Hiram Bithorn Stadium - San Juan, PR",A,Pool Play
+15,Mar 8,Sunday,12:00 PM,COL,Colombia,CUB,Cuba,"Hiram Bithorn Stadium - San Juan, PR",A,Pool Play
+16,Mar 8,Sunday,7:00 PM,PAN,Panama,CAN,Canada,"Hiram Bithorn Stadium - San Juan, PR",A,Pool Play
+17,Mar 9,Monday,12:00 PM,COL,Colombia,PAN,Panama,"Hiram Bithorn Stadium - San Juan, PR",A,Pool Play
+18,Mar 9,Monday,7:00 PM,CUB,Cuba,PUR,Puerto Rico,"Hiram Bithorn Stadium - San Juan, PR",A,Pool Play
+19,Mar 10,Tuesday,7:00 PM,CAN,Canada,PUR,Puerto Rico,"Hiram Bithorn Stadium - San Juan, PR",A,Pool Play
+20,Mar 11,Wednesday,3:00 PM,CAN,Canada,CUB,Cuba,"Hiram Bithorn Stadium - San Juan, PR",A,Pool Play
+21,Mar 6,Friday,1:00 PM,MEX,Mexico,GBR,Great Britain,"Daikin Park - Houston, TX",B,Pool Play
+22,Mar 6,Friday,8:00 PM,USA,United States,BRA,Brazil,"Daikin Park - Houston, TX",B,Pool Play
+23,Mar 7,Saturday,1:00 PM,BRA,Brazil,ITA,Italy,"Daikin Park - Houston, TX",B,Pool Play
+24,Mar 7,Saturday,8:00 PM,GBR,Great Britain,USA,United States,"Daikin Park - Houston, TX",B,Pool Play
+25,Mar 8,Sunday,1:00 PM,GBR,Great Britain,ITA,Italy,"Daikin Park - Houston, TX",B,Pool Play
+26,Mar 8,Sunday,8:00 PM,BRA,Brazil,MEX,Mexico,"Daikin Park - Houston, TX",B,Pool Play
+27,Mar 9,Monday,1:00 PM,BRA,Brazil,GBR,Great Britain,"Daikin Park - Houston, TX",B,Pool Play
+28,Mar 9,Monday,8:00 PM,MEX,Mexico,USA,United States,"Daikin Park - Houston, TX",B,Pool Play
+29,Mar 10,Tuesday,9:00 PM,ITA,Italy,USA,United States,"Daikin Park - Houston, TX",B,Pool Play
+30,Mar 11,Wednesday,7:00 PM,ITA,Italy,MEX,Mexico,"Daikin Park - Houston, TX",B,Pool Play
+31,Mar 6,Friday,12:00 PM,NED,Netherlands,VEN,Venezuela,"loanDepot park - Miami, FL",D,Pool Play
+32,Mar 6,Friday,7:00 PM,NCA,Nicaragua,DOM,Dominican Republic,"loanDepot park - Miami, FL",D,Pool Play
+33,Mar 7,Saturday,12:00 PM,NCA,Nicaragua,NED,Netherlands,"loanDepot park - Miami, FL",D,Pool Play
+34,Mar 7,Saturday,7:00 PM,ISR,Israel,VEN,Venezuela,"loanDepot park - Miami, FL",D,Pool Play
+35,Mar 8,Sunday,12:00 PM,NED,Netherlands,DOM,Dominican Republic,"loanDepot park - Miami, FL",D,Pool Play
+36,Mar 8,Sunday,7:00 PM,NCA,Nicaragua,ISR,Israel,"loanDepot park - Miami, FL",D,Pool Play
+37,Mar 9,Monday,12:00 PM,DOM,Dominican Republic,ISR,Israel,"loanDepot park - Miami, FL",D,Pool Play
+38,Mar 9,Monday,7:00 PM,VEN,Venezuela,NCA,Nicaragua,"loanDepot park - Miami, FL",D,Pool Play
+39,Mar 10,Tuesday,7:00 PM,ISR,Israel,NED,Netherlands,"loanDepot park - Miami, FL",D,Pool Play
+40,Mar 11,Wednesday,8:00 PM,DOM,Dominican Republic,VEN,Venezuela,"loanDepot park - Miami, FL",D,Pool Play
+41,Mar 13,Friday,6:30 PM,TBD,TBD,TBD,TBD,"loanDepot park - Miami, FL",,Quarterfinals
+42,Mar 13,Friday,8:00 PM,TBD,TBD,TBD,TBD,"Daikin Park - Houston, TX",,Quarterfinals
+43,Mar 14,Saturday,3:00 PM,TBD,TBD,TBD,TBD,"Daikin Park - Houston, TX",,Quarterfinals
+44,Mar 14,Saturday,9:00 PM,TBD,TBD,TBD,TBD,"loanDepot park - Miami, FL",,Quarterfinals
+45,Mar 15,Sunday,8:00 PM,TBD,TBD,TBD,TBD,"loanDepot park - Miami, FL",,Semifinals
+46,Mar 16,Monday,8:00 PM,TBD,TBD,TBD,TBD,"loanDepot park - Miami, FL",,Semifinals
+47,Mar 17,Tuesday,8:00 PM,TBD,TBD,TBD,TBD,"loanDepot park - Miami, FL",,Final
